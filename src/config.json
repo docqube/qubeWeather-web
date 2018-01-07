@@ -1,0 +1,10 @@
+{
+    "station":{
+        "name":"Default station name",
+        "wunderground":"XXXXXXXXX"
+    },
+    "url": {
+        "api":"<qubeWeather>/api"
+    },
+    "impress":""
+}
