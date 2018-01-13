@@ -1,21 +1,27 @@
-# weatherpi-web
+# qubeWeather WebUI
 
-> WebApp for WeatherPi API
+This is the fronted webapp for qubeWeather API written in VueJS.
 
-## Build Setup
+## Requirements
+
+If you want to build the webapp, you have to install Node.js (Version 8.9). You can download it [here](https://nodejs.org/en/).
+
+To display your station data, you also need a qubeWeather API instance running.
+
+## Configuration
+
+Open the `src/config.json` file and change the options to yours. If you want to link your impress, fill the address of it in the impress option.
+
+## Build
 
 ``` bash
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
-
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Deploy
+
+Upload the builded files from the `dist/` folder to a webserver.
