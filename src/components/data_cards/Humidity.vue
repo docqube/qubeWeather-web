@@ -36,11 +36,11 @@ export default {
             var startTime = new Date();
             startTime.setDate(endTime.getDate()-1);
 
-            this.$http.get('?sensor=humidity&starttime='+encodeURI(startTime.toUTCString())+'&endtime='+encodeURI(endTime.toUTCString())).then(response => {
+            this.$http.get('humidity/'+startTime.toISOString() +'/' + endTime.toISOString()).then(response => {
                 var times = new Array();
                 var values = new Array();
 
-                response.body.response.forEach(element => {
+                response.body.data.forEach(element => {
                     times.push(element.time);
                     values.push(parseFloat(element.value));
                 });

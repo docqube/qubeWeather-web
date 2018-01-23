@@ -91,47 +91,42 @@ export default {
     },
     methods: {
         loadData(){
-            this.$http.get('?sensor=temperature').then(response => {
-                this.lastupdate = new Date(response.body.response.time).toLocaleString()
-                this.temperature = response.body.response.value
+            this.$http.get('temperature').then(response => {
+                console.log(response.body.data)
+                this.lastupdate = new Date(response.body.data.time).toLocaleString()
+                this.temperature = response.body.data.value
             }, response => {
                 console.log("ERROR in AJAX")
             });
             
-            this.$http.get('?sensor=humidity').then(response => {
-                this.humidity = response.body.response.value
+            this.$http.get('humidity').then(response => {
+                this.humidity = response.body.data.value
             }, response => {
-                console.log("ERROR in AJAX")
             });
             
-            this.$http.get('?sensor=pressure').then(response => {
-                this.pressure = response.body.response.value
+            this.$http.get('pressure').then(response => {
+                this.pressure = response.body.data.value
             }, response => {
-                console.log("ERROR in AJAX")
             });
             
-            this.$http.get('?sensor=windspeed').then(response => {
-                this.wind_speed = response.body.response.value
+            this.$http.get('windspeed').then(response => {
+                this.wind_speed = response.body.data.value
             }, response => {
-                console.log("ERROR in AJAX")
             });
             
-            this.$http.get('?sensor=windgust').then(response => {
-                this.wind_gusts = response.body.response.value
+            this.$http.get('windgust').then(response => {
+                this.wind_gusts = response.body.data.value
             }, response => {
-                console.log("ERROR in AJAX")
             });
 
-            this.$http.get('?sensor=precipitation').then(response => {
-                this.precipitation = response.body.response.value
+            this.$http.get('dailyrainin').then(response => {
+                this.precipitation = Math.round(response.body.data.value * 25.4 * 100) / 100;
             }, response => {
-                console.log("ERROR in AJAX")
             });
             
-            this.$http.get('?sensor=lightlevel').then(response => {
-                this.lightlevel = response.body.response.value
+            this.$http.get('lightlevel').then(response => {
+                this.lightlevel = response.body.data.value
             }, response => {
-                console.log("ERROR in AJAX")
             });
         }
     },

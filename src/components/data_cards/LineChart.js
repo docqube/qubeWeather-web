@@ -4,10 +4,9 @@ const { reactiveProp } = mixins
 export default {
   extends: Line,
   mixins: [reactiveProp],
-  props: ['options'],
   data(){
       return {
-        chartOptions: {
+        options: {
             responsive: true,
             bezierCurve: false,
             title: {
@@ -22,7 +21,7 @@ export default {
                     type: 'time',
                     time: {
                         displayFormats: {
-                            hour: 'h a'
+                            hour: 'H.mm'
                         }
                     }
                 }],
@@ -39,6 +38,6 @@ export default {
   mounted () {
     // this.chartData is created in the mixin.
     // If you want to pass options please create a local options object
-    this.renderChart(this.chartData, this.chartOptions)
+    this.renderChart(this.chartData, this.options)
   }
 }

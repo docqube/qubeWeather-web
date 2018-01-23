@@ -36,13 +36,13 @@ export default {
             var startTime = new Date();
             startTime.setDate(endTime.getDate()-1);
 
-            this.$http.get('?sensor=precipitation&starttime='+encodeURI(startTime.toUTCString())+'&endtime='+encodeURI(endTime.toUTCString())).then(response => {
+            this.$http.get('dailyrainin/'+startTime.toISOString() +'/' + endTime.toISOString()).then(response => {
                 var times = new Array();
                 var values = new Array();
 
-                response.body.response.forEach(element => {
+                response.body.data.forEach(element => {
                     times.push(element.time);
-                    values.push(parseFloat(element.value));
+                    values.push(Math.round(parseFloat(element.value)*25.4*100) / 100);
                 });
                 
                 this.chartData = {

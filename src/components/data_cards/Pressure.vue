@@ -2,7 +2,7 @@
     <div class="md-layout-item md-size-50 md-xsmall-size-100">
         <md-card>
             <md-card-header>
-                <div class="md-title">Total precipitation</div>
+                <div class="md-title">Pressure</div>
             </md-card-header>
 
             <md-card-content>
@@ -36,11 +36,11 @@ export default {
             var startTime = new Date();
             startTime.setDate(endTime.getDate()-1);
 
-            this.$http.get('?sensor=pressure&starttime='+encodeURI(startTime.toUTCString())+'&endtime='+encodeURI(endTime.toUTCString())).then(response => {
+            this.$http.get('pressure/'+startTime.toISOString() +'/' + endTime.toISOString()).then(response => {
                 var times = new Array();
                 var values = new Array();
 
-                response.body.response.forEach(element => {
+                response.body.data.forEach(element => {
                     times.push(element.time);
                     values.push(parseFloat(element.value));
                 });

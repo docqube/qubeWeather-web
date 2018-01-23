@@ -36,19 +36,19 @@ export default {
             var startTime = new Date();
             startTime.setDate(endTime.getDate()-1);
 
-            this.$http.get('?sensor=windspeed&starttime='+encodeURI(startTime.toUTCString())+'&endtime='+encodeURI(endTime.toUTCString())).then(response => {
+            this.$http.get('windspeed/'+startTime.toISOString() +'/' + endTime.toISOString()).then(response => {
                 var times = new Array();
                 var windspeedValues = new Array();
 
-                response.body.response.forEach(element => {
+                response.body.data.forEach(element => {
                     times.push(element.time);
                     windspeedValues.push(parseFloat(element.value));
                 });
 
-                this.$http.get('?sensor=windgust&starttime='+encodeURI(startTime.toUTCString())+'&endtime='+encodeURI(endTime.toUTCString())).then(response => {
+                this.$http.get('windgust/'+startTime.toISOString() +'/' + endTime.toISOString()).then(response => {
                     var windgustValues = new Array();
 
-                    response.body.response.forEach(element => {
+                    response.body.data.forEach(element => {
                         windgustValues.push(parseFloat(element.value));
                     });
 
